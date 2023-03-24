@@ -1,12 +1,13 @@
 package org.exercicio.banco.template.model;
 
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 /**
 *
-* Nome:
-* Curso:
-* Matrícula:
+* Nome: Vinicius Tavares
+* Curso: TSI
+* Matrícula: 
 * 
 */
 public class Cliente {
@@ -31,7 +32,14 @@ public class Cliente {
      * @param c
      */
     public void adicionarConta(ContaBancaria c) {
+        if(this.contas.contains(c)){
+            System.out.print( "A conta jah estah associada a este Cliente.");
 
+        }else {
+             this.contas.add(c); 
+            System.out.print("Conta adicionada com sucesso!");
+       }
+     
     }
 
     
@@ -45,6 +53,12 @@ public class Cliente {
      * @param c
      */
     public void removerConta(ContaBancaria c) {
+         if(this.contas.contains(c)){
+             this.contas.remove(c);
+             System.out.print("Conta removida com sucesso!");
+        } else {
+             System.out.print("A conta nao esta associada a este cliente.")
+        }
 
     }
 
@@ -59,6 +73,14 @@ public class Cliente {
      * @return
      */
     public ContaBancaria localizarContaNumero(int numero) {
+        for(int i =0; i < this.contas.size(); i++){
+          if(this.contas.get(i).getnumeroconta() == numero) {
+            System.out.print("Conta encontrada!")
+            return this.contas.get(i);
+        } else { 
+            System.out.print("Conta nao encontrada.")
+
+        }
         return null;
     }
 
@@ -74,7 +96,13 @@ public class Cliente {
      * @return
      */
     public boolean localizarConta(ContaBancaria c) {
-        return false;
+        if(this.contas.contains(c)){
+            System.out.print(Conta encontrada!)
+            return true
+        } else (
+            System.out.print("Conta nao encontrada.")
+        )
+         return false;
     }
 
     /**
@@ -86,7 +114,16 @@ public class Cliente {
      * @return
      */
     public double balancoEntreContas() {
-        return 0.0;
+        double saldo = 0;
+
+        for (int i = 0; i < this.contas.size(); i++) {
+             saldo += this.contas.get(i).getSaldo();
+        }
+        DecimalFormat df = new DecimalFormat("#.##");
+        System.out.print("Balanco entre contas: RS" + df.format(saldo));
+        return saldo;
+    }
+    
     }
     
     public ArrayList<ContaBancaria> getContas() {
