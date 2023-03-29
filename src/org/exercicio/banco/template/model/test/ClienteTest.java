@@ -20,8 +20,8 @@ public class ClienteTest {
     @Before
     public void setUp() {
         cliente = new Cliente("Joao da Silva","000");
-        conta1 = new ContaBancaria(12345,0);
-        conta2 = new ContaBancaria(67890,0);
+        conta1 = new ContaBancaria(12345,"0");
+        conta2 = new ContaBancaria(67890,"0");
     }
     
     @Test
